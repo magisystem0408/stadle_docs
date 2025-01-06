@@ -1,12 +1,12 @@
 import time
 from optparse import OptionParser
+from security import safe_requests
+
 # Python 3 compat
 try:
     from urlparse import urlparse
 except ImportError:
     from urllib.parse import urlparse
-
-import requests
 from bs4 import BeautifulSoup
 
 from utils import log, should_ignore
@@ -41,7 +41,7 @@ class Crawler(object):
 
         :param url: The fully qualified URL to retrieve
         """
-        response = requests.get(url)
+        response = safe_requests.get(url)
         log(url, response.status_code)
         return response.content
 
