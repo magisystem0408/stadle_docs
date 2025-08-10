@@ -41,7 +41,7 @@ class Crawler(object):
 
         :param url: The fully qualified URL to retrieve
         """
-        response = requests.get(url)
+        response = requests.get(url, timeout=60)
         log(url, response.status_code)
         return response.content
 
